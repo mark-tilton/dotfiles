@@ -6,12 +6,15 @@ syntax enable
 
 " Show line numbers
 set number
+set relativenumber
 
 set expandtab
 set shiftwidth=4
 
 set exrc
 set secure
+
+let mapleader=","
 
 call plug#begin('~/.vim/plugged')
 
