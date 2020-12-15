@@ -6,13 +6,18 @@ syntax enable
 
 " Show line numbers
 set number
-set relativenumber
 
 set expandtab
 set shiftwidth=4
 
 set exrc
 set secure
+
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set signcolumn=yes
 
 let mapleader=","
 
@@ -25,6 +30,8 @@ Plug 'scrooloose/nerdtree'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='deus\ theme'
 
 " Allow using c-hjkl to move between vim splits and tmux windows
 Plug 'toranb/tmux-navigator'
@@ -36,29 +43,31 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'morhetz/gruvbox'
 
 " Autocomplete
-" Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-" Plug 'zchee/deoplete-jedi'
-" Plug 'davidhalter/jedi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-pyright',
+    \ 'coc-css'
+    \ ]
 
 "Javascript
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'herringtondarkholme/yats.vim'
 
 call plug#end()
+
+" === Setup file associations ===
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " === Setup theme ===
 " Enable true color support for nvim
 let $NVIM_TUT_ENABLE_TRUE_COLOR = 1
-
-" Enable italics in gruvbox
-let g:gruvbox_italic = 1
-
-" Enable true color support in gruvbox
-set termguicolors
-
-" Enable gruvbox
-autocmd vimenter * colorscheme gruvbox
+let g:gruvbox_italic = 1 " Enable italics in gruvbox
+set termguicolors " Enable true color support in gruvbox
+colorscheme gruvbox " Enable gruvbox
 
 " === Setup autocomplete ===
 " Automatically close preview split
@@ -67,25 +76,6 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 1 | pclose | endif
 " Navigate autocomplete with <tab>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" ===== COC SETUP =====
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
