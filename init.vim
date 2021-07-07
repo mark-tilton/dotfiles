@@ -1,8 +1,4 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-
-" Enable syntax highlighting
-syntax enable
+" Enable syntax highlighting syntax enable
 
 " Show line numbers
 set number
@@ -17,9 +13,24 @@ set hidden
 set nobackup
 set nowritebackup
 set updatetime=300
+set timeoutlen=300
 set signcolumn=yes
+set mouse=a
+set cursorline
 
-let mapleader=","
+" Remap ; to :
+nnoremap ; :
+
+" Custom leader commands
+let mapleader="\<Space>"
+nnoremap <silent> <leader>q :lclose<bar>bp<bar>bd #<CR>
+map <leader>r :e %:h<cr>
+map <leader>b :OpenBookmark 
+
+" Filetype alias
+autocmd! BufRead,BufNewFile *.cconf     setfiletype python
+autocmd! BufRead,BufNewFile TARGETS     setfiletype python
+autocmd! BufRead,BufNewFile BUCK        setfiletype python
 
 call plug#begin('~/.vim/plugged')
 
@@ -31,13 +42,21 @@ Plug 'scrooloose/nerdtree'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='deus\ theme'
+let g:airline_theme='deus'
 
 " Allow using c-hjkl to move between vim splits and tmux windows
 Plug 'toranb/tmux-navigator'
 
 " Navigate files with c-p
 Plug 'ctrlpvim/ctrlp.vim'
+
+" SNEAK
+Plug 'justinmk/vim-sneak'
+let g:sneak#s_next = 1
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " Theme
 Plug 'morhetz/gruvbox'
@@ -47,15 +66,20 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-pyright',
-    \ 'coc-css'
+    \ 'coc-css',
+    \ 'coc-json',
+    \'coc-clangd'
     \ ]
 
-"Javascript
+" Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'herringtondarkholme/yats.vim'
+
+" Diff directories
+Plug 'will133/vim-dirdiff'
 
 call plug#end()
 
