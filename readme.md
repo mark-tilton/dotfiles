@@ -1,9 +1,9 @@
 # Dotfiles
 
 ## Initial installation
-Need to install xcode clt
-Need to install brew and casks
-Need to install zsh, oh-my-zsh
+- Need to install xcode clt
+- Need to install brew and casks
+- Need to install zsh, oh-my-zsh
 
 ## Brew
 - `cmake`

@@ -18,9 +18,6 @@ set signcolumn=yes
 set mouse=a
 set cursorline
 
-" Remap ; to :
-nnoremap ; :
-
 " Custom leader commands
 let mapleader="\<Space>"
 nnoremap <silent> <leader>q :lclose<bar>bp<bar>bd #<CR>
@@ -50,13 +47,8 @@ Plug 'toranb/tmux-navigator'
 " Navigate files with c-p
 Plug 'ctrlpvim/ctrlp.vim'
 
-" SNEAK
-Plug 'justinmk/vim-sneak'
-let g:sneak#s_next = 1
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+" Leap
+Plug 'ggandor/leap.nvim'
 
 " Theme
 Plug 'morhetz/gruvbox'
@@ -68,7 +60,8 @@ let g:coc_global_extensions = [
     \ 'coc-pyright',
     \ 'coc-css',
     \ 'coc-json',
-    \'coc-clangd'
+    \'coc-clangd',
+    \'coc-rust-analyzer'
     \ ]
 
 " Javascript
