@@ -1,14 +1,9 @@
-" Enable syntax highlighting syntax enable
-
-" Show line numbers
+set secure
 set number
-
 set expandtab
 set shiftwidth=4
-
 set exrc
 set secure
-
 set hidden
 set nobackup
 set nowritebackup
@@ -16,7 +11,6 @@ set updatetime=300
 set timeoutlen=300
 set signcolumn=yes
 set mouse=a
-set cursorline
 
 " Custom leader commands
 let mapleader="\<Space>"
@@ -47,12 +41,19 @@ Plug 'toranb/tmux-navigator'
 " Navigation
 Plug 'tpope/vim-repeat'
 Plug 'ggandor/leap.nvim'
+Plug 'pechorin/any-jump.vim'
+
+" Commenting
+Plug 'preservim/nerdcommenter'
 
 " Theme
 Plug 'morhetz/gruvbox'
 
 " Git
 Plug 'tpope/vim-fugitive'
+
+" Ctrl-p file search
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Language servers
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -61,8 +62,8 @@ let g:coc_global_extensions = [
     \ 'coc-pyright',
     \ 'coc-css',
     \ 'coc-json',
-    \'coc-clangd',
-    \'coc-rust-analyzer'
+    \ 'coc-clangd',
+    \ 'coc-rust-analyzer'
     \ ]
 
 " Javascript
@@ -77,7 +78,24 @@ Plug 'will133/vim-dirdiff'
 
 call plug#end()
 
-" Set default keymaps for leap
+" Setup for nerdcommenter
+filetype plugin on
+let g:NERDCreateDefaultMappings = 0
+nmap <leader>c <Plug>NERDCommenterToggle
+vmap <leader>c <Plug>NERDCommenterToggle
+
+" Setup ctrl-p to use ag
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" Setup plugins
 lua require('leap').set_default_keymaps()
 
 " === Setup file associations ===
@@ -89,6 +107,7 @@ let $NVIM_TUT_ENABLE_TRUE_COLOR = 1
 let g:gruvbox_italic = 1 " Enable italics in gruvbox
 set termguicolors " Enable true color support in gruvbox
 colorscheme gruvbox " Enable gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 
 " === Setup autocomplete ===
 " Automatically close preview split
@@ -185,18 +204,18 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>l  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>

@@ -4,8 +4,8 @@ cd ~/repos/dotfiles/
 echo "Setting up command line tools"
 xcode-select --install
 
-# Setup homebrew
-echo "Setting up homebrew"
+# Install homebrew
+echo "Installing homebrew"
 if test ! $(which brew); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
@@ -49,6 +49,12 @@ fi
 echo "Setting up GitHub CLI"
 if ! brew list gh; then
     brew install gh
+fi
+
+# Install ag
+echo "Installing ag"
+if ! brew list ag; then
+    brew install ag
 fi
 
 # Setup node
