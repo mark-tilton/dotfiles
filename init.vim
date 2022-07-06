@@ -44,16 +44,17 @@ let g:airline_theme='deus'
 " Allow using c-hjkl to move between vim splits and tmux windows
 Plug 'toranb/tmux-navigator'
 
-" Navigate files with c-p
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Leap
+" Navigation
+Plug 'tpope/vim-repeat'
 Plug 'ggandor/leap.nvim'
 
 " Theme
 Plug 'morhetz/gruvbox'
 
-" Autocomplete
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Language servers
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
     \ 'coc-tsserver',
@@ -75,6 +76,9 @@ Plug 'herringtondarkholme/yats.vim'
 Plug 'will133/vim-dirdiff'
 
 call plug#end()
+
+" Set default keymaps for leap
+lua require('leap').set_default_keymaps()
 
 " === Setup file associations ===
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
