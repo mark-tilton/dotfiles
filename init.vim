@@ -1,7 +1,8 @@
 set secure
 set number
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
+set tabstop=2
 set exrc
 set secure
 set hidden
@@ -63,7 +64,8 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-json',
     \ 'coc-clangd',
-    \ 'coc-rust-analyzer'
+    \ 'coc-rust-analyzer',
+    \ 'coc-svelte'
     \ ]
 
 " Javascript
@@ -72,6 +74,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'herringtondarkholme/yats.vim'
+Plug 'leafOfTree/vim-svelte-plugin'
 
 " Diff directories
 Plug 'will133/vim-dirdiff'
