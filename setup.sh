@@ -16,8 +16,9 @@ brew update
 echo "Installing homebrew packages"
 apps=(
     stow
-    zsh
     font-hack-nerd-font
+    zsh
+    antidote
     tmux
     git
     gh
@@ -38,16 +39,21 @@ apps=(
     spotify
 )
 for app in "${apps[@]}"; do
-    echo "Installing $app"
     if ! brew list "$app"; then
+        echo "Installing $app"
         brew install "$app"
     fi
 done
 
 # Install docker through cask
 if ! brew list docker; then
+    echo "Installing docker"
     brew install --cask docker
 fi
+
+# Install alacritty gruvbox theme
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
 # Upgrade all packages
 brew upgrade
@@ -58,12 +64,6 @@ brew cleanup
 # Set git config
 git config --global user.name "Mark Tilton"
 git config --global user.email "mark.tilton.a@gmail.com"
-
-# Setup oh-my-zsh
-echo "Setting up oh-my-zsh"
-if ! [ -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
 
 # Install rust via rustup
 rustup update
