@@ -25,7 +25,9 @@ apps=(
     git
     gh
     neovim
+    lazygit
     rustup
+    npm
     dotnet
     betterdisplay
     pipx
