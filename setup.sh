@@ -32,6 +32,7 @@ apps=(
     betterdisplay
     pipx
     htop
+    karabiner-elements
     raycast
     obsidian
     dropbox
