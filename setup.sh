@@ -15,6 +15,8 @@ brew update
 # Install apps
 echo "Installing homebrew packages"
 apps=(
+    fd
+    fzf
     stow
     font-hack-nerd-font
     zsh
