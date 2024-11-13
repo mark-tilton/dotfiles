@@ -32,6 +32,7 @@ apps=(
     betterdisplay
     pipx
     htop
+    rectangle
     karabiner-elements
     raycast
     obsidian

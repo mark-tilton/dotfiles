@@ -15,4 +15,4 @@ family = "Hack Nerd Font"
 
 [window]
 opacity = 0.80
-
+decorations = "none"
