@@ -16,9 +16,6 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 12
 # Disable the "Are you sure you want to open this application?" dialog.
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Disable "natural" scrolling.
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
 # Text correction
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false     # Disable automatic capitalization.
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false # Disable peroid substitution.
