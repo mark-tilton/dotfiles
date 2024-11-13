@@ -1,5 +1,2 @@
-# Neovim config
-stow nvim -t ~
-
-# Zsh config
-stow zsh -t ~
+# Set up symlinks for dotfiles
+stow . -t ~ -v

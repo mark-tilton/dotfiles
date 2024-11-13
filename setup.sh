@@ -8,6 +8,7 @@ xcode-select --install
 echo "Installing homebrew"
 if test ! "$(which brew)"; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 brew update
 
@@ -66,6 +67,3 @@ fi
 
 # Install rust via rustup
 rustup update
-
-# Set up symlinks for dotfiles
-stow . -t ~ -v
