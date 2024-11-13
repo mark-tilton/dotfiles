@@ -8,7 +8,7 @@ export ZSH="/Users/marktilton/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +70,11 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    osx
+    poetry
+    zsh-autosuggestions 
+    zsh-syntax-highlighting 
+    fast-syntax-highlighting 
+    zsh-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -101,9 +105,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Enable completions
+autoload -Uz compinit && compinit
+
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+alias at="tmux attach -t"
+
+# Created by `pipx` on 2024-10-27 06:58:45
+export PATH="$PATH:/Users/marktilton/.local/bin"
 
