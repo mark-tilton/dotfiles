@@ -1,54 +1,29 @@
 # Dotfiles
 
 ## Initial installation
-- Need to install xcode clt
-- Need to install brew and casks
-- Need to install zsh, oh-my-zsh
+To set up a fresh machine, all that should be needed is to run the setup script `./setup.sh`
+Preffered macos settings can be set using `./mac_settings.sh`
 
-## Brew
-- `cmake`
-- `git`
-- `htop`
-- `node`
-- `pyenv`
-    - `openssl`
-    - `readline`
-    - `sqlite3`
-    - `xz`
-    - `zlib`
-- `rust`
-
-## Casks
-- Alfred
-- Beekeeper Studio | `beekeeper-studio`
-- Day One
-- Docker
-- Discord
-- Dropbox
-- Git Kraken
-- Good Notes
-- Google Chrome | `google-chrome`
-- ITerm2 | `iterm2`
-- Keka?
-- Logi Options
-- Magnet
-- OBS?
-- Pocket Casts
-- Postman
-- Skype
-- Spark
-- Spotify
-- Team Viewer
-- Unity
-- VS Code
-- VLC
-- Zoom
+# Apps
+1password
+Alacritty
+Better Display
+Bruno
+Discord
+Dropbox
+Firefox
+Karabiner Elements
+Obsidian
+Raycast
+Rectangle
+Spotify
+WezTerm
 
 ## Settings
+- Alacritty | `.alacritty.toml`
+- Git | `.gitconfig`
 - Neovim | `init.vim`
 - tmux | `.tmux.conf`
-- Git | `.gitconfig`
+- WezTerm | `.wezterm.lua`
+- Zsh | `.zshrc` `zshenv` `.zsh_plugins.txt` `.zprofile`
 
-## To-Do
-- Investigate integrating [https://iterm2.com/documentation-shell-integration.html]
-- Figure out how to carry over coc extensions

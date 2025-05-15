@@ -15,39 +15,52 @@ brew update
 # Install apps
 echo "Installing homebrew packages"
 apps=(
+    # Symlinks
+    stow
+
+    # Fuzzy finder
     fd
     fzf
     rg
-    stow
-    font-hack-nerd-font
-    font-fira-code
+
+    # Terminal
     zsh
     antidote
     tmux
+    neovim
+
+    # Git and Github
     git
     gh
-    neovim
     lazygit
+
+    # Languages / Package Managers
     cmake
-    luarocks
-    rustup
-    npm
     dotnet
-    betterdisplay
-    pipx
     htop
-    rectangle
-    karabiner-elements
-    raycast
-    obsidian
-    dropbox
-    bruno
-    firefox
-    alacritty
-    wezterm
-    discord
+    luarocks
+    npm
+    pipx
+    rustup
+
+    # Fonts
+    font-hack-nerd-font
+    font-fira-code
+
+    # Apps
     1password
+    alacritty
+    betterdisplay
+    bruno
+    discord
+    dropbox
+    firefox
+    karabiner-elements
+    obsidian
+    raycast
+    rectangle
     spotify
+    wezterm
 )
 for app in "${apps[@]}"; do
     if ! brew list "$app"; then
