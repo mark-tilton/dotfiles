@@ -17,8 +17,10 @@ echo "Installing homebrew packages"
 apps=(
     fd
     fzf
+    rg
     stow
     font-hack-nerd-font
+    font-fira-code
     zsh
     antidote
     tmux
@@ -26,6 +28,8 @@ apps=(
     gh
     neovim
     lazygit
+    cmake
+    luarocks
     rustup
     npm
     dotnet
@@ -40,6 +44,7 @@ apps=(
     bruno
     firefox
     alacritty
+    wezterm
     discord
     1password
     spotify
