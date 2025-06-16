@@ -75,10 +75,6 @@ if ! brew list docker; then
     brew install --cask docker
 fi
 
-# Install alacritty gruvbox theme
-mkdir -p ~/.config/alacritty/themes
-git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
-
 # Upgrade all packages
 brew upgrade
 
@@ -88,6 +84,13 @@ brew cleanup
 # Set git config
 git config --global user.name "Mark Tilton"
 git config --global user.email "mark.tilton.a@gmail.com"
+
+# Install alacritty gruvbox theme
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install rust via rustup
 rustup update
