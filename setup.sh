@@ -46,6 +46,8 @@ apps=(
     # Fonts
     font-hack-nerd-font
     font-fira-code
+    sf-symbols
+    font-sketchybar-app-font
 
     # Apps
     1password
@@ -53,27 +55,25 @@ apps=(
     betterdisplay
     bruno
     discord
+    docker
     dropbox
     firefox
     karabiner-elements
     obsidian
     raycast
     rectangle
+    sketchybar
     spotify
     wezterm
 )
+
+brew tap FelixKratz/formulae
 for app in "${apps[@]}"; do
     if ! brew list "$app"; then
         echo "Installing $app"
         brew install "$app"
     fi
 done
-
-# Install docker through cask
-if ! brew list docker; then
-    echo "Installing docker"
-    brew install --cask docker
-fi
 
 # Upgrade all packages
 brew upgrade
@@ -88,6 +88,11 @@ git config --global user.email "mark.tilton.a@gmail.com"
 # Install alacritty gruvbox theme
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+# Install lua configuration support for sketchybar
+(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+# Start sketchybar at startup
+brew services start sketchybar
 
 # Install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
