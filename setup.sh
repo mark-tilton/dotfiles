@@ -85,6 +85,9 @@ brew cleanup
 git config --global user.name "Mark Tilton"
 git config --global user.email "mark.tilton.a@gmail.com"
 
+# Stow dotfiles
+./stow_dotfiles.sh
+
 # Install alacritty gruvbox theme
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes

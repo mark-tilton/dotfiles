@@ -1,3 +1,0 @@
-.*.md # Ignore markdown files
-.*\.sh # Ignore setup scripts
-\.git # Ignore git repo

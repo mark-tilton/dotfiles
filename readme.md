@@ -26,5 +26,5 @@ Preferred macos settings can be set using `./mac_settings.sh`
 - Neovim | `init.vim`
 - tmux | `.tmux.conf`
 - WezTerm | `.wezterm.lua`
-- Zsh | `.zshrc` `zshenv` `.zsh_plugins.txt` `.zprofile`
+- Zsh | `.zshrc` `.zshenv` `.zsh_plugins.txt` `.zprofile`
 
