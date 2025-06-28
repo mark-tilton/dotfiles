@@ -84,6 +84,7 @@ brew cleanup
 # Set git config
 git config --global user.name "Mark Tilton"
 git config --global user.email "mark.tilton.a@gmail.com"
+git config --global core.excludesfile ~/.gitignore_global
 
 # Stow dotfiles
 ./stow_dotfiles.sh
