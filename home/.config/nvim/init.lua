@@ -57,7 +57,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -69,10 +69,25 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 20
 
--- Always expand tabs to spaces
-vim.opt.expandtab = true
+-- Set the default shift size
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+
+vim.o.winborder = "none"
+vim.diagnostic.config {
+  signs = true,
+  underline = true,
+  virtual_text = false,
+  virtual_lines = false,
+  update_in_insert = true,
+  float = {
+    -- UI.
+    border = 'rounded',
+    focusable = true,
+  }
+}
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -82,8 +97,10 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>dp", vim.diagnostic.get_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "<leader>dn", vim.diagnostic.get_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.jump({ count = -1, float = true }) end,
+  { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.jump({ count = 1, float = true }) end,
+  { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 

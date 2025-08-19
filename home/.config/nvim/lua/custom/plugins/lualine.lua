@@ -18,7 +18,7 @@ return {
       statusline = 1000,
       tabline = 1000,
       winbar = 1000,
-      refresh_time = 16,   -- ~60fps
+      refresh_time = 16, -- ~60fps
       events = {
         'WinEnter',
         'BufEnter',
@@ -35,7 +35,7 @@ return {
     sections = {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
-      lualine_c = { 'filename' },
+      lualine_c = { { 'filename', path = 1 } },
       lualine_x = { 'encoding', 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' }

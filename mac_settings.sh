@@ -48,3 +48,6 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 # Stop iTunes from responding to the keyboard media keys.
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
+
+# Set the max window hight for rectangle
+defaults write com.knollsoft.Rectangle screenEdgeGapTop -int 40 
