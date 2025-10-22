@@ -47,7 +47,6 @@ apps=(
     font-hack-nerd-font
     font-fira-code
     sf-symbols
-    font-sketchybar-app-font
 
     # Apps
     1password
@@ -62,7 +61,6 @@ apps=(
     obsidian
     raycast
     rectangle
-    sketchybar
     spotify
     wezterm
 )
@@ -92,11 +90,6 @@ git config --global core.excludesfile ~/.gitignore_global
 # Install alacritty gruvbox theme
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
-
-# Install lua configuration support for sketchybar
-(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
-# Start sketchybar at startup
-brew services start sketchybar
 
 # Install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
