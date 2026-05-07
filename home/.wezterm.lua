@@ -4,7 +4,7 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.font_size = 12
+config.font_size = 14
 config.color_scheme = 'Rosé Pine Moon (Gogh)'
 config.hide_tab_bar_if_only_one_tab = true
 config.font = wezterm.font("Fira Code")
@@ -29,7 +29,7 @@ local background = {
 	{
 		source = {
 			File = wezterm.home_dir ..
-			    "/wallpapers/terminalbackground.jpg",
+					"/wallpapers/terminalbackground.jpg",
 		},
 		hsb = hsb,
 		vertical_align = "Middle",
