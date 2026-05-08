@@ -1,6 +1,7 @@
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   opts = {
     ensure_installed = { "bash", "c", "diff", "html", "json5", "odin", "lua", "luadoc", "markdown", "vim", "vimdoc" },
     -- Autoinstall languages that are not installed
@@ -13,6 +14,31 @@ return { -- Highlight, edit, and navigate code
       additional_vim_regex_highlighting = { "ruby" },
     },
     indent = { enable = true, disable = { "ruby" } },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+          ["aa"] = "@parameter.outer",
+          ["ia"] = "@parameter.inner",
+        },
+      },
+      move = {
+        enable = true,
+        set_jumps = true,
+        goto_next_start = { ["]a"] = "@parameter.inner", ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+        goto_previous_start = { ["[a"] = "@parameter.inner", ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+      },
+      swap = {
+        enable = true,
+        swap_next = { ["<leader>na"] = "@parameter.inner", ["<leader>nf"] = "@function.outer" },
+        swap_previous = { ["<leader>pa"] = "@parameter.inner", ["<leader>pf"] = "@function.outer" },
+      },
+    },
   },
   config = function(_, opts)
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
