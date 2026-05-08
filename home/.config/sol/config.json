@@ -14,16 +14,7 @@
   "searchEngine": "google",
   "customSearchUrl": "https://google.com/search?q=%s",
   "shortcuts": {
-    "resize_fullscreen": "control+option+return",
     "lock": "command+option+q",
-    "resize_right_half": "control+option+right",
-    "resize_left_half": "control+option+left",
-    "resize_top_half": "control+option+up",
-    "resize_bottom_half": "control+option+down",
-    "resize_top_left": "control+option+u",
-    "resize_top_right": "control+option+i",
-    "resize_bottom_left": "control+option+j",
-    "resize_bottom_right": "control+option+k",
     "move_next_screen": "control+option+command+right",
     "move_previous_screen": "control+option+command+left",
     "scratchpad": "command+shift+space",
@@ -34,5 +25,22 @@
   "hasDismissedGettingStarted": true,
   "hyperKeyEnabled": false,
   "customItems": [],
-  "disabledItemIds": []
+  "disabledItemIds": [
+    "resize_bottom_half",
+    "resize_bottom_left",
+    "resize_bottom_right",
+    "resize_center_third",
+    "resize_fullscreen",
+    "resize_left_third",
+    "resize_left_two_thirds",
+    "resize_left_half",
+    "resize_right_third",
+    "resize_right_two_thirds",
+    "resize_right_half",
+    "resize_top_half",
+    "resize_top_left",
+    "resize_top_right",
+    "move_to_previous_space",
+    "move_to_next_space"
+  ]
 }

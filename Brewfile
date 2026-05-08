@@ -1,7 +1,11 @@
 tap "felixkratz/formulae"
+tap "nikitabobko/tap"
 
 # Symlinks
 brew "stow"
+
+# Window manager extras
+brew "borders"
 
 # Fuzzy finder / search
 brew "fd"
@@ -65,6 +69,7 @@ cask "logi-options+"
 cask "love"
 cask "obsidian"
 cask "sol"
+cask "aerospace"
 cask "rectangle"
 cask "spotify"
 cask "wezterm"
