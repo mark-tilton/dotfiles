@@ -14,7 +14,6 @@ Preferred macos settings can be set using `./mac_settings.sh`
 - Firefox
 - Karabiner Elements
 - Obsidian
-- Raycast
 - Rectangle
 - Spotify
 - WezTerm
