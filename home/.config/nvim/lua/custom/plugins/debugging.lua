@@ -104,6 +104,27 @@ return {
       require("dap.ui.widgets").hover(nil, { border = "rounded" })
     end, { desc = "Debug: Hover value" })
 
+    -- Add the word under cursor to the watches panel
+    vim.keymap.set("n", "<leader>Dw", function()
+      require("dapui").elements.watches.add(vim.fn.expand("<cword>"))
+    end, { desc = "Debug: [W]atch word under cursor" })
+
+    -- Add visual selection to the watches panel
+    vim.keymap.set("v", "<leader>Dw", function()
+      local s = vim.fn.getpos("'<")
+      local e = vim.fn.getpos("'>")
+      local lines = vim.fn.getline(s[2], e[2])
+      if #lines == 0 then return end
+      lines[#lines] = string.sub(lines[#lines], 1, e[3])
+      lines[1] = string.sub(lines[1], s[3])
+      require("dapui").elements.watches.add(table.concat(lines, "\n"))
+    end, { desc = "Debug: [W]atch selection" })
+
+    -- Eval expression in a focusable popup (press q to close, e to expand)
+    vim.keymap.set({ "n", "v" }, "<leader>De", function()
+      require("dapui").eval(nil, { enter = true })
+    end, { desc = "Debug: [E]val expression" })
+
     -- Close DAP floating windows with q or <Esc>
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "dap-float",
