@@ -11,8 +11,30 @@ return {
     local dap = require("dap")
     local dapui = require("dapui")
 
-    dapui.setup()
-    require("nvim-dap-virtual-text").setup()
+    dapui.setup({
+      icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+      controls = {
+        icons = {
+          pause = "⏸",
+          play = "▶",
+          step_into = "⏎",
+          step_over = "⏭",
+          step_out = "⏮",
+          step_back = "b",
+          run_last = "▶▶",
+          terminate = "⏹",
+          disconnect = "⏏",
+        },
+      },
+    })
+
+    local sign = vim.fn.sign_define
+    sign("DapBreakpoint",          { text = "●", texthl = "DapBreakpoint",          linehl = "",               numhl = "" })
+    sign("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpointCondition", linehl = "",               numhl = "" })
+    sign("DapLogPoint",            { text = "◆", texthl = "DapLogPoint",            linehl = "",               numhl = "" })
+    sign("DapStopped",             { text = "▶", texthl = "DapStopped",             linehl = "DapStoppedLine", numhl = "" })
+    sign("DapBreakpointRejected",  { text = "", texthl = "DapBreakpointRejected",  linehl = "",               numhl = "" })
+
     require("mason-nvim-dap").setup({
       ensure_installed = { "codelldb" },
     })
@@ -69,18 +91,27 @@ return {
     }
 
     -- Keymaps
-    vim.keymap.set("n", "<F5>", dap.continue)
-    vim.keymap.set("n", "<S-F5>", dap.terminate)
-    vim.keymap.set("n", "<F6>", dap.pause)
-    vim.keymap.set("n", "<F9>", dap.toggle_breakpoint)
-    vim.keymap.set("n", "<F10>", dap.step_over)
-    vim.keymap.set("n", "<F11>", dap.step_into)
-    vim.keymap.set("n", "<F12>", dap.step_out)
+    vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
+    vim.keymap.set("n", "<leader>Dt", dap.terminate, { desc = "Debug: [T]erminate" })
+    vim.keymap.set("n", "<F6>", dap.pause, { desc = "Debug: Pause" })
+    vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = "Debug: Toggle breakpoint" })
+    vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step over" })
+    vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debug: Step into" })
+    vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debug: Step out" })
 
     -- Value hover: press K while debugging to inspect symbol under cursor
     vim.keymap.set({ "n", "v" }, "<Leader>k", function()
       require("dap.ui.widgets").hover(nil, { border = "rounded" })
-    end)
+    end, { desc = "Debug: Hover value" })
+
+    -- Close DAP floating windows with q or <Esc>
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "dap-float",
+      callback = function(args)
+        vim.keymap.set("n", "q", "<cmd>close!<cr>", { buffer = args.buf, silent = true })
+        vim.keymap.set("n", "<Esc>", "<cmd>close!<cr>", { buffer = args.buf, silent = true })
+      end,
+    })
 
     -- Set up inline hints
     require("nvim-dap-virtual-text").setup({
@@ -90,8 +121,8 @@ return {
       highlight_new_as_changed = false,
       show_stop_reason = true,
       commented = false,
-      only_first_definition = false, -- show value at every reference, not just first
-      all_references = true,         -- annotate all references, not just declarations
+      only_first_definition = true, -- show value at every reference, not just first
+      all_references = true,        -- annotate all references, not just declarations
       display_callback = function(variable, buf, stackframe, node, options)
         if options.virt_text_pos == 'inline' then
           return ' = ' .. variable.value
