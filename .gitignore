@@ -1,4 +1,5 @@
 .config/nvim/lazy-lock.json
+.config/karabiner/automatic_backups/
 .DS_Store
 .claude
 

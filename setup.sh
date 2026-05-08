@@ -31,8 +31,8 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# Install rust via rustup
-rustup update
-
-# Update tealdeer cache
-tldr --update || true
+# Updates that can be slow on every run — pass --skip-updates to bypass
+if [[ "$*" != *--skip-updates* ]]; then
+    rustup update || true
+    tldr --update || true
+fi
