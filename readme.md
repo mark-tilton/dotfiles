@@ -1,7 +1,7 @@
 # Dotfiles
 
 ## Initial installation
-To set up a fresh machine, all that should be needed is to run the setup script `./setup.sh` 
+To set up a fresh machine, all that should be needed is to run the setup script `./setup.sh`. It installs everything declared in the `Brewfile` via `brew bundle` and then stows the dotfiles in `home/`.
 
 Preferred macos settings can be set using `./mac_settings.sh`
 
@@ -23,7 +23,8 @@ Preferred macos settings can be set using `./mac_settings.sh`
 ## Settings
 - Alacritty | `.alacritty.toml`
 - Git | `.gitconfig`
-- Neovim | `init.vim`
+- Neovim | `.config/nvim/`
+- Starship | `.config/starship.toml`
 - tmux | `.tmux.conf`
 - WezTerm | `.wezterm.lua`
 - Zsh | `.zshrc` `.zshenv` `.zsh_plugins.txt` `.zprofile`

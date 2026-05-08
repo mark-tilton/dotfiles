@@ -1,8 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
 cd ~/repos/dotfiles/ || exit
 
 # Install xcode command line tools
 echo "Setting up command line tools"
-xcode-select --install
+xcode-select --install || true
 
 # Install homebrew
 echo "Installing homebrew"
@@ -12,87 +15,30 @@ if test ! "$(which brew)"; then
 fi
 brew update
 
-# Install apps
-echo "Installing homebrew packages"
-apps=(
-    # Symlinks
-    stow
+# Install everything from the Brewfile
+echo "Installing packages from Brewfile"
+brew bundle --file=./Brewfile
 
-    # Fuzzy finder
-    fd
-    fzf
-    rg
-
-    # Terminal
-    zsh
-    antidote
-    tmux
-    neovim
-
-    # Git and Github
-    git
-    gh
-    lazygit
-
-    # Languages / Package Managers
-    cmake
-    dotnet
-    htop
-    luarocks
-    npm
-    pipx
-    rustup
-
-    # Fonts
-    font-hack-nerd-font
-    font-fira-code
-    sf-symbols
-
-    # Apps
-    1password
-    alacritty
-    betterdisplay
-    bruno
-    discord
-    docker
-    dropbox
-    firefox
-    karabiner-elements
-    obsidian
-    raycast
-    rectangle
-    spotify
-    wezterm
-)
-
-brew tap FelixKratz/formulae
-for app in "${apps[@]}"; do
-    if ! brew list "$app"; then
-        echo "Installing $app"
-        brew install "$app"
-    fi
-done
-
-# Upgrade all packages
+# Upgrade and cleanup
 brew upgrade
-
-# Cleanup brew
 brew cleanup
-
-# Set git config
-git config --global user.name "Mark Tilton"
-git config --global user.email "mark.tilton.a@gmail.com"
-git config --global core.excludesfile ~/.gitignore_global
 
 # Stow dotfiles
 ./stow_dotfiles.sh
 
 # Install alacritty gruvbox theme
 mkdir -p ~/.config/alacritty/themes
-git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+if [ ! -d ~/.config/alacritty/themes/.git ]; then
+    git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+fi
 
 # Install tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # Install rust via rustup
 rustup update
+
+# Update tealdeer cache
+tldr --update || true
