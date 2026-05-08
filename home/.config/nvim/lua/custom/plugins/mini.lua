@@ -29,6 +29,10 @@ return { -- Collection of various small independent plugins/modules
       },
     })
 
+    -- Split/join arguments and lists.
+    -- - gS - toggle split/join under cursor
+    require("mini.splitjoin").setup()
+
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin

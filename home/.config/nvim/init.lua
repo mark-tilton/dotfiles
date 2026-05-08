@@ -68,7 +68,7 @@ vim.opt.termguicolors = true
 -- Show which line your cursor is on
 vim.opt.cursorline = false
 
--- Minimal number of screen lines to keep above and below the cursor.
+-- jMinimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
 -- Set the default shift size
@@ -124,6 +124,12 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Move a block of code one line at a time
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Paste over selection without clobbering the yank register
+vim.keymap.set("x", "p", "P", { desc = "Paste without yanking selection" })
+
+-- Skip the shift for command mode
+vim.keymap.set({ "n", "x" }, ";", ":")
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
