@@ -7,7 +7,6 @@ Preferred macos settings can be set using `./mac_settings.sh`
 
 # Apps
 - 1password
-- Alacritty
 - Better Display
 - Bruno
 - Discord
@@ -21,7 +20,6 @@ Preferred macos settings can be set using `./mac_settings.sh`
 - WezTerm
 
 ## Settings
-- Alacritty | `.alacritty.toml`
 - Git | `.gitconfig`
 - Neovim | `.config/nvim/`
 - Starship | `.config/starship.toml`

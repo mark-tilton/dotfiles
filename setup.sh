@@ -26,12 +26,6 @@ brew cleanup
 # Stow dotfiles
 ./stow_dotfiles.sh
 
-# Install alacritty gruvbox theme
-mkdir -p ~/.config/alacritty/themes
-if [ ! -d ~/.config/alacritty/themes/.git ]; then
-    git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
-fi
-
 # Install tmux plugin manager
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

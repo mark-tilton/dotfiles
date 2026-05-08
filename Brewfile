@@ -45,7 +45,6 @@ cask "sf-symbols"
 
 # Apps
 cask "1password"
-cask "alacritty"
 cask "betterdisplay"
 cask "bruno"
 cask "discord"
