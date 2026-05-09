@@ -30,12 +30,28 @@ return {
         'CursorMoved',
         'CursorMovedI',
         'ModeChanged',
+        'RecordingEnter',
+        'RecordingLeave',
       },
     },
     sections = {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
-      lualine_c = { { 'filename', path = 1 } },
+      lualine_c = {
+        {
+          function()
+            local reg = vim.fn.reg_recording()
+            if reg == '' then return '' end
+            return 'RECORDING @' .. reg
+          end,
+          color = { fg = '#000000', bg = '#ff5555', gui = 'bold' },
+        },
+        {
+          'filename',
+          path = 1,
+          color = { fg = '#ffffff', gui = 'bold' },
+        },
+      },
       lualine_x = { 'encoding', 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' }

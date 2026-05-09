@@ -125,6 +125,28 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
+-- Swap with adjacent split in direction (Ctrl+Shift+hjkl)
+local function swap_split(dir)
+  return function()
+    local cur = vim.api.nvim_get_current_win()
+    vim.cmd("wincmd " .. dir)
+    local target = vim.api.nvim_get_current_win()
+    if cur == target then return end
+    local cur_buf = vim.api.nvim_win_get_buf(cur)
+    local target_buf = vim.api.nvim_win_get_buf(target)
+    vim.api.nvim_win_set_buf(target, cur_buf)
+    vim.api.nvim_win_set_buf(cur, target_buf)
+  end
+end
+vim.keymap.set("n", "<C-S-h>", swap_split("h"), { desc = "Swap split left" })
+vim.keymap.set("n", "<C-S-j>", swap_split("j"), { desc = "Swap split down" })
+vim.keymap.set("n", "<C-S-k>", swap_split("k"), { desc = "Swap split up" })
+vim.keymap.set("n", "<C-S-l>", swap_split("l"), { desc = "Swap split right" })
+
+-- Splits
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split vertical" })
+vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split horizontal" })
+
 -- Paste over selection without clobbering the yank register
 vim.keymap.set("x", "p", "P", { desc = "Paste without yanking selection" })
 
