@@ -230,6 +230,7 @@ return {
       "ruff",
       "rust-analyzer",
       "prettierd",
+      "prettier",
       "ols",
       "codelldb",
     })

@@ -24,6 +24,11 @@ return {
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
       }
     end,
+    formatters = {
+      prettier = {
+        prepend_args = { "--prose-wrap", "always", "--print-width", "80" },
+      },
+    },
     formatters_by_ft = {
       lua = { "luaformatter" },
       -- Conform can also run multiple formatters sequentially
@@ -35,6 +40,7 @@ return {
       javascriptreact = { "prettierd" },
       typescript = { "prettierd" },
       typescriptreact = { "prettierd" },
+      markdown = { "prettier" },
     },
   },
 }
