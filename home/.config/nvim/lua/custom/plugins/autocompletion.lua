@@ -93,5 +93,12 @@ return {
         { name = "path" },
       },
     })
+
+    cmp.setup.filetype("markdown", {
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "path" },
+      },
+    })
   end,
 }
