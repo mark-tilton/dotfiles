@@ -36,6 +36,7 @@ brew "odin"
 brew "pipx"
 brew "rust-analyzer"
 brew "rustup"
+brew "tree-sitter-cli"
 
 # Modern CLI replacements / additions
 brew "bat"
@@ -45,6 +46,7 @@ brew "btop"
 brew "tealdeer"
 brew "atuin"
 brew "mas"
+brew "zk"
 
 # Fonts
 cask "font-hack-nerd-font"

@@ -13,6 +13,7 @@ return {
       { "<leader>s", group = "[S]earch" },
       { "<leader>t", group = "[T]oggle" },
       { "<leader>w", group = "[W]orkspace" },
+      { "<leader>z", group = "[Z]k Notes" },
     },
   },
 }

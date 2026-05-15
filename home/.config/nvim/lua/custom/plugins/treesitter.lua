@@ -1,5 +1,51 @@
+local ensure_installed = {
+  "bash",
+  "c",
+  "c_sharp",
+  "css",
+  "diff",
+  "dockerfile",
+  "gitignore",
+  "html",
+  "javascript",
+  "json",
+  "json5",
+  "lua",
+  "luadoc",
+  "markdown",
+  "markdown_inline",
+  "odin",
+  "python",
+  "query",
+  "regex",
+  "rust",
+  "tmux",
+  "toml",
+  "tsx",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "xml",
+  "yaml",
+}
+
+local function missing_parsers(treesitter)
+  local installed = {}
+  for _, lang in ipairs(treesitter.get_installed("parsers")) do
+    installed[lang] = true
+  end
+
+  return vim.iter(ensure_installed)
+    :filter(function(lang)
+      return not installed[lang]
+    end)
+    :totable()
+end
+
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  lazy = false,
   build = ":TSUpdate",
   dependencies = {
     {
@@ -82,18 +128,25 @@ return { -- Highlight, edit, and navigate code
       end,
     },
   },
-  opts = {
-    ensure_installed = { "bash", "c", "diff", "html", "json5", "odin", "lua", "luadoc", "markdown", "vim", "vimdoc" },
-    auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { "ruby" },
-    },
-    indent = { enable = true, disable = { "ruby" } },
-  },
-  config = function(_, opts)
-    require("nvim-treesitter.install").prefer_git = true
-    ---@diagnostic disable-next-line: missing-fields
-    require("nvim-treesitter.configs").setup(opts)
+  init = function()
+    -- The main branch removed highlight/indent/ensure_installed config options.
+    -- Highlighting and indentation must be enabled via FileType autocmd.
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function()
+        local ok = pcall(vim.treesitter.start)
+        if ok then
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end,
+    })
+  end,
+  config = function()
+    local treesitter = require("nvim-treesitter")
+    treesitter.setup()
+
+    local missing = missing_parsers(treesitter)
+    if #missing > 0 then
+      treesitter.install(missing)
+    end
   end,
 }

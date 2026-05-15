@@ -1,3 +1,5 @@
+export ZK_NOTEBOOK_DIR="$HOME/repos/notes"
+
 # Begin added by argcomplete
 fpath=( /Users/marktilton/.local/pipx/venvs/argcomplete/lib/python3.13/site-packages/argcomplete/bash_completion.d "${fpath[@]}" )
 # End added by argcomplete
