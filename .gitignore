@@ -3,3 +3,8 @@
 .DS_Store
 .claude
 
+home/.config/karabiner/automatic_backups/
+home/.config/sol/images_pasteboard/
+home/.config/sol/mmkv.default
+home/.config/sol/mmkv.default.crc
+
