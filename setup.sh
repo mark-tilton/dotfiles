@@ -19,6 +19,9 @@ brew update
 echo "Installing packages from Brewfile"
 brew bundle --file=./Brewfile
 
+# Install Python CLI tools
+pipx install zk-graph-view || pipx upgrade zk-graph-view
+
 # Upgrade and cleanup
 brew upgrade
 brew cleanup
