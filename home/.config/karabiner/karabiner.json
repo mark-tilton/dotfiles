@@ -294,6 +294,14 @@
                         "is_pointing_device": true
                     },
                     "ignore": false
+                },
+                {
+                    "identifiers": {
+                        "device_address": "f0-d7-b5-31-59-51",
+                        "is_keyboard": true,
+                        "is_pointing_device": true
+                    },
+                    "ignore": false
                 }
             ],
             "name": "Default profile",
