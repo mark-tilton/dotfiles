@@ -12,6 +12,9 @@ brew "fd"
 brew "fzf"
 brew "ripgrep"
 
+# Image rendering (snacks.nvim image previews)
+brew "imagemagick"
+
 # Terminal
 brew "zsh"
 brew "antidote"

@@ -15,7 +15,7 @@ return {
   },
   config = function()
     require("zk").setup({
-      picker = "telescope",
+      picker = "snacks_picker",
       lsp = {
         config = {
           cmd = { "zk", "lsp" },
@@ -103,7 +103,7 @@ return {
         vim.notify("ZK_NOTEBOOK_DIR is not set", vim.log.levels.WARN)
         return
       end
-      require("telescope.builtin").live_grep({ cwd = dir })
+      Snacks.picker.grep({ dirs = { dir } })
     end, { desc = "[Z]k [G]rep notes" })
   end,
 }

@@ -199,7 +199,6 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
   require("kickstart.plugins.autopairs"),
-  require('kickstart.plugins.neo-tree'),
   require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
 
   { import = 'custom.plugins' },
