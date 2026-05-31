@@ -29,7 +29,7 @@ RosePine = {
 	priority = 1000,
 	config = function()
 		require("rose-pine").setup({
-			variant = "auto", -- auto, main, moon, or dawn
+			variant = "auto",   -- auto, main, moon, or dawn
 			dark_variant = "main", -- main, moon, or dawn
 			dim_inactive_windows = false,
 			extend_background_behind_borders = true,
@@ -37,7 +37,7 @@ RosePine = {
 			enable = {
 				terminal = true,
 				legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-				migrations = true, -- Handle deprecated options automatically
+				migrations = true,    -- Handle deprecated options automatically
 			},
 
 			styles = {
@@ -150,11 +150,15 @@ Kanagawa = {
 					LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 					MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
-					-- Make the popup better
-					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+					-- Match the completion menu to the editor background so it blends in like the hover float
+					Pmenu = { fg = theme.ui.fg, bg = theme.ui.bg },
+					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p1 },
 					PmenuSbar = { bg = theme.ui.bg_m1 },
 					PmenuThumb = { bg = theme.ui.bg_p2 },
+
+					-- Kanagawa hardcodes a blue (waveBlue) bg for the blink.cmp menu border,
+					-- ignoring the Pmenu override above; match it to the menu background.
+					BlinkCmpMenuBorder = { fg = theme.ui.fg_dim, bg = theme.ui.bg },
 
 					-- Tint background of diagnostic messages
 					DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
