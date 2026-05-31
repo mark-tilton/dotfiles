@@ -71,6 +71,10 @@ vim.opt.cursorline = false
 -- jMinimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
+-- Load project-local `.nvim.lua` from the launch directory (prompts to trust
+-- on first load / after edits). Used to drive per-project debug config.
+vim.o.exrc = true
+
 -- Set the default shift size
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2

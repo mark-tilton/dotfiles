@@ -52,9 +52,18 @@ return {
       },
     }
 
-    -- Helper: derive output binary path from cwd
+    -- Helper: resolve the output binary path.
+    -- A project's `.nvim.lua` can set `vim.g.odin_debug_program` (absolute, or
+    -- relative to cwd). Otherwise fall back to deriving it from the folder name.
     local function get_binary_path()
       local cwd = vim.fn.getcwd()
+      local program = vim.g.odin_debug_program
+      if program ~= nil and program ~= "" then
+        if program:sub(1, 1) ~= "/" then
+          program = cwd .. "/" .. program
+        end
+        return program
+      end
       local name = vim.fn.fnamemodify(cwd, ":t") -- folder name
       if vim.fn.has("win32") == 1 then
         return cwd .. "/" .. name .. ".exe"
@@ -62,10 +71,17 @@ return {
       return cwd .. "/" .. name
     end
 
-    -- Helper: build the project, return true on success
+    -- Helper: build the project, return true on success.
+    -- A project's `.nvim.lua` can set `vim.g.odin_debug_build` (a string run via
+    -- the shell, e.g. "./build.sh", or a list of argv). Otherwise default to a
+    -- plain debug build in the cwd.
     local function build_odin()
+      local cmd = vim.g.odin_debug_build
+      if cmd == nil or cmd == "" then
+        cmd = { "odin", "build", ".", "-debug" }
+      end
       vim.notify("Building Odin project...", vim.log.levels.INFO)
-      local result = vim.fn.system({ "odin", "build", ".", "-debug" })
+      local result = vim.fn.system(cmd)
       if vim.v.shell_error ~= 0 then
         vim.notify("Build failed:\n" .. result, vim.log.levels.ERROR)
         return false
@@ -84,6 +100,9 @@ return {
             return dap.ABORT -- cancels the launch
           end
           return get_binary_path()
+        end,
+        args = function()
+          return vim.g.odin_debug_args or {}
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
