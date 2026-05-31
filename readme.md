@@ -12,17 +12,17 @@ Preferred macos settings can be set using `./mac_settings.sh`
 - Discord
 - Dropbox
 - Firefox
+- Ghostty
 - Karabiner Elements
 - Obsidian
 - Rectangle
 - Spotify
-- WezTerm
 
 ## Settings
 - Git | `.gitconfig`
 - Neovim | `.config/nvim/`
 - Starship | `.config/starship.toml`
 - tmux | `.tmux.conf`
-- WezTerm | `.wezterm.lua`
+- Ghostty | `.config/ghostty/`
 - Zsh | `.zshrc` `.zshenv` `.zsh_plugins.txt` `.zprofile`
 
