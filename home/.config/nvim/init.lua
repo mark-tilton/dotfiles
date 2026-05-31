@@ -75,7 +75,9 @@ vim.opt.scrolloff = 20
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
-vim.o.winborder = "none"
+-- Global default border for all floating windows; individual plugins/calls
+-- inherit this unless they pass their own `border`.
+vim.o.winborder = "rounded"
 vim.diagnostic.config {
   signs = true,
   underline = true,
@@ -83,8 +85,6 @@ vim.diagnostic.config {
   virtual_lines = false,
   update_in_insert = true,
   float = {
-    -- UI.
-    border = 'rounded',
     focusable = true,
   }
 }
