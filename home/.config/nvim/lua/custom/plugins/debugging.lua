@@ -109,6 +109,42 @@ return {
       },
     }
 
+    -- Love2D / standalone Lua debugging via local-lua-debugger-vscode.
+    -- Installed by mason-tool-installer; requires Node on PATH to run the adapter.
+    local lua_dbg = vim.fn.stdpath("data") .. "/mason/packages/local-lua-debugger-vscode/extension"
+    dap.adapters["local-lua"] = {
+      type = "executable",
+      command = "node",
+      args = { lua_dbg .. "/extension/debugAdapter.js" },
+      enrich_config = function(config, on_config)
+        if not config.extensionPath then
+          local c = vim.deepcopy(config)
+          c.extensionPath = lua_dbg .. "/"
+          on_config(c)
+        else
+          on_config(config)
+        end
+      end,
+    }
+
+    dap.configurations.lua = {
+      {
+        name = "Debug LÖVE game",
+        type = "local-lua",
+        request = "launch",
+        cwd = "${workspaceFolder}",
+        program = { command = "love" },
+        args = { "${workspaceFolder}" },
+      },
+      {
+        name = "Debug current Lua file",
+        type = "local-lua",
+        request = "launch",
+        cwd = "${workspaceFolder}",
+        program = { lua = "lua", file = "${file}" },
+      },
+    }
+
     -- Keymaps
     vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
     vim.keymap.set("n", "<leader>Dt", dap.terminate, { desc = "Debug: [T]erminate" })
