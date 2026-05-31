@@ -10,8 +10,8 @@ return {
     -- See `:help blink-cmp-config-keymap`. Ported from the old nvim-cmp maps.
     keymap = {
       preset = "none",
-      ["<C-e>"] = { "select_next", "fallback" },
-      ["<C-b>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<Up>"] = { "select_prev", "fallback" },
       ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       ["<Tab>"] = { "accept", "fallback" },
