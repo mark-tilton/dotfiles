@@ -33,6 +33,9 @@ return { -- Collection of various small independent plugins/modules
     -- - gS - toggle split/join under cursor
     require("mini.splitjoin").setup()
 
+    -- Auto-pair brackets, quotes, etc.
+    require("mini.pairs").setup()
+
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin

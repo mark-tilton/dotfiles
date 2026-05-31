@@ -9,6 +9,12 @@ return {
   lazy = false,
   opts = {
     image = { enabled = true },
+    indent = { enabled = true },
+    scope = { enabled = true },
+    scroll = { enabled = true },
+    words = { enabled = true },
+    notifier = { enabled = true }, -- noice already prefers the snacks backend
+    dashboard = { enabled = true },
     picker = {
       enabled = true,
       ui_select = true, -- replace vim.ui.select (also powers the yank history picker)
@@ -38,6 +44,9 @@ return {
     { "<leader><leader>", function() Snacks.picker.files() end, desc = "[ ] [ ] Search Files" },
     { "<leader>/", function() Snacks.picker.lines() end, desc = "[S]earch [/] in current buffer" },
     { "<leader>s/", function() Snacks.picker.grep_buffers() end, desc = "[S]earch [/] in Open Files" },
+
+    -- Git
+    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazy[g]it" },
 
     -- File browser
     { "<leader>b", function() Snacks.explorer() end, desc = "[B]rowse Files" },
