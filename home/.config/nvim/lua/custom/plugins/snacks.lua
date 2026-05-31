@@ -22,8 +22,23 @@ return {
         files = { hidden = true, exclude = { "node_modules", ".git", ".venv" } },
         explorer = {
           hidden = true,
-          -- Press \ again to close the explorer when it's focused
-          win = { list = { keys = { ["\\"] = "close" } } },
+          -- Close the float once a file is opened.
+          jump = { close = true },
+          -- Float instead of a sidebar split so opening it never resizes the
+          -- existing windows (the split layout carved space unevenly).
+          layout = {
+            preview = false,
+            layout = {
+              backdrop = false,
+              width = 0.25,
+              min_width = 40,
+              height = 0.9,
+              border = "rounded",
+              box = "vertical",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+            },
+          },
         },
       },
     },
@@ -50,11 +65,5 @@ return {
 
     -- File browser
     { "<leader>b", function() Snacks.explorer() end, desc = "[B]rowse Files" },
-    { "\\", function()
-      -- Open+reveal (open grabs focus); if already open, jump focus into the tree.
-      local open = Snacks.picker.get({ source = "explorer" })[1]
-      Snacks.explorer.reveal()
-      if open then open:focus("list") end
-    end, desc = "Explorer (reveal / focus tree)" },
   },
 }
