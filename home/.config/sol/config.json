@@ -21,7 +21,7 @@
     "Finder": 9,
     "Nimble Commander": 3,
     "System Settings": 3,
-    "Aseprite": 3,
+    "Aseprite": 4,
     "Google Chrome": 5,
     "Discord": 6,
     "GitKraken": 1,
@@ -33,7 +33,8 @@
     "Display": 1,
     "AeroSpace": 1,
     "Steam": 1,
-    "Sleep": 1
+    "Sleep": 2,
+    "LinearMouse": 1
   },
   "history": [
     "finder",
@@ -81,7 +82,10 @@
     "nim",
     "sleep",
     "asep",
-    "ase"
+    "ase",
+    "line",
+    "asep",
+    "sl"
   ],
   "note": "",
   "onboardingStep": "v1_completed",
