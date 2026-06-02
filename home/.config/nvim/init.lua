@@ -157,6 +157,16 @@ vim.keymap.set("x", "p", "P", { desc = "Paste without yanking selection" })
 -- Skip the shift for command mode
 vim.keymap.set({ "n", "x" }, ";", ":", { desc = "Enter command mode" })
 
+-- Run a per-project script with `<leader>j` (set `vim.g.quick_script` in a project-root .nvim.lua)
+vim.keymap.set("n", "<leader>j", function()
+  local script = vim.g.quick_script
+  if not script or script == "" then
+    vim.notify("vim.g.quick_script is not set (define it in .nvim.lua)", vim.log.levels.WARN)
+    return
+  end
+  vim.cmd("!" .. script)
+end, { desc = "Run project script (vim.g.quick_script)" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
