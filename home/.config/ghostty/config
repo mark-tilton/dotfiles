@@ -6,7 +6,7 @@ cursor-style-blink = false
 shell-integration-features = no-cursor
 mouse-hide-while-typing = true
 
-theme = "kanagawa-wave"
+theme = dark:kanagawa-wave,light:kanagawa-lotus
 
 background-opacity = 1
 

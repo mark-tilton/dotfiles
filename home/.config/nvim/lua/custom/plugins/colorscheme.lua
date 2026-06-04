@@ -115,9 +115,11 @@ RosePine = {
 }
 Kanagawa = {
 	"rebelot/kanagawa.nvim",
+	dependencies = { "f-person/auto-dark-mode.nvim" },
 	config = function()
 		require("kanagawa").setup({
 			theme = "wave",
+			background = { dark = "wave", light = "lotus" },
 
 			colors = {
 				theme = {
@@ -169,6 +171,17 @@ Kanagawa = {
 			end,
 		})
 		vim.cmd("colorscheme kanagawa")
+
+		require("auto-dark-mode").setup({
+			set_dark_mode = function()
+				vim.o.background = "dark"
+				vim.cmd("colorscheme kanagawa")
+			end,
+			set_light_mode = function()
+				vim.o.background = "light"
+				vim.cmd("colorscheme kanagawa")
+			end,
+		})
 	end,
 }
 return Kanagawa

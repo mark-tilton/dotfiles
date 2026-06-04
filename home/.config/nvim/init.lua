@@ -53,6 +53,12 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- Keep splits equally sized when the terminal window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+	desc = "Equalize split sizes on resize",
+	command = "wincmd =",
+})
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -82,7 +88,7 @@ vim.opt.tabstop = 2
 -- Global default border for all floating windows; individual plugins/calls
 -- inherit this unless they pass their own `border`.
 vim.o.winborder = "rounded"
-vim.diagnostic.config {
+vim.diagnostic.config({
   signs = true,
   underline = true,
   virtual_text = false,
@@ -90,8 +96,8 @@ vim.diagnostic.config {
   update_in_insert = true,
   float = {
     focusable = true,
-  }
-}
+  },
+})
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -101,10 +107,12 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.jump({ count = -1, float = true }) end,
-  { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.jump({ count = 1, float = true }) end,
-  { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>dp", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "<leader>dn", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -135,7 +143,9 @@ local function swap_split(dir)
     local cur = vim.api.nvim_get_current_win()
     vim.cmd("wincmd " .. dir)
     local target = vim.api.nvim_get_current_win()
-    if cur == target then return end
+    if cur == target then
+      return
+    end
     local cur_buf = vim.api.nvim_win_get_buf(cur)
     local target_buf = vim.api.nvim_win_get_buf(target)
     vim.api.nvim_win_set_buf(target, cur_buf)
@@ -214,7 +224,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
 
-  { import = 'custom.plugins' },
+  { import = "custom.plugins" },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
