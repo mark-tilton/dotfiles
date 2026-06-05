@@ -88,10 +88,6 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # Float instead of tile: apps whose windows are panels, popups, or file dialogs
 # that misbehave when pulled into the tiling tree (focus-steal / hide / dismiss).
 [[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = 'layout floating'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 

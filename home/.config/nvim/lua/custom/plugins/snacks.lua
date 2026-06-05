@@ -7,6 +7,19 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  init = function()
+    -- Don't animate the topline shift that a window resize produces; it makes
+    -- splits feel like they resize on a delay. Real scrolling still animates.
+    vim.api.nvim_create_autocmd({ "WinResized", "VimResized" }, {
+      group = vim.api.nvim_create_augroup("snacks_scroll_no_resize", { clear = true }),
+      callback = function()
+        vim.g.snacks_scroll = false
+        vim.schedule(function()
+          vim.g.snacks_scroll = true
+        end)
+      end,
+    })
+  end,
   opts = {
     image = { enabled = true },
     indent = { enabled = true },
