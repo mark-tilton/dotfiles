@@ -52,11 +52,8 @@ brew "mas"
 brew "zk"
 
 # Fonts
-cask "font-hack-nerd-font"
-cask "font-fira-code"
 cask "font-maple-mono-nf"
-cask "font-victor-mono-nerd-font"
-cask "sf-symbols"
+cask "font-quicksand"
 
 # Apps
 cask "1password"
