@@ -120,6 +120,7 @@ Kanagawa = {
 		require("kanagawa").setup({
 			theme = "wave",
 			background = { dark = "wave", light = "lotus" },
+			transparent = true,
 
 			colors = {
 				theme = {
