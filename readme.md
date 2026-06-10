@@ -3,20 +3,10 @@
 ## Initial installation
 To set up a fresh machine, all that should be needed is to run the setup script `./setup.sh`. It installs everything declared in the `Brewfile` via `brew bundle` and then stows the dotfiles in `home/`.
 
-Preferred macos settings can be set using `./mac_settings.sh`
+Preferred macOS settings can be set using `./mac_settings.sh` (also run by `setup.sh`).
 
-# Apps
-- 1password
-- Better Display
-- Bruno
-- Discord
-- Dropbox
-- Firefox
-- Ghostty
-- Karabiner Elements
-- Obsidian
-- Rectangle
-- Spotify
+## Apps
+All CLI tools, apps, and fonts are declared in the `Brewfile` — it is the source of truth.
 
 ## Settings
 - Git | `.gitconfig`

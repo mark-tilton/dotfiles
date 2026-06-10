@@ -1,3 +1,10 @@
+#!/usr/bin/env bash
+
+# Disable window open/close animations so AeroSpace can reposition immediately
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+# Reduce motion further cuts AeroSpace's animation-wait lag (takes effect after logout)
+defaults write com.apple.universalaccess reduceMotion -bool true
+
 # Only show active items on the dock
 defaults write com.apple.dock static-only -bool true
 

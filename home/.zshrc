@@ -22,14 +22,9 @@ alias gl="git pull"
 alias gf="git fetch"
 alias glog="git log --oneline --graph --decorate"
 
-# Plugins via antidote
+# Plugins via antidote (ez-compinit in the plugin list handles compinit)
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
-antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh
-source ~/.zsh_plugins.zsh
-
-# Completions
-autoload -Uz compinit && compinit
 
 # Prompt and shell integrations
 eval "$(starship init zsh)"

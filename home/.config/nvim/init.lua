@@ -74,7 +74,7 @@ vim.opt.termguicolors = true
 -- Show which line your cursor is on
 vim.opt.cursorline = false
 
--- jMinimal number of screen lines to keep above and below the cursor.
+-- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
 -- Load project-local `.nvim.lua` from the launch directory (prompts to trust

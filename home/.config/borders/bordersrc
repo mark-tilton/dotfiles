@@ -4,8 +4,9 @@ options=(
     style=round
     width=6.0
     hidpi=on
-    active_color=0xffeb6f92
-    inactive_color=0xff44415a
+    # Kanagawa: crystalBlue active, sumiInk4 inactive
+    active_color=0xff7e9cd8
+    inactive_color=0xff54546d
 )
 
 borders "${options[@]}"

@@ -48,7 +48,6 @@ brew "zoxide"
 brew "btop"
 brew "tealdeer"
 brew "atuin"
-brew "mas"
 brew "zk"
 
 # Fonts
@@ -74,5 +73,4 @@ cask "logi-options+"
 cask "love"
 cask "obsidian"
 cask "aerospace"
-cask "rectangle"
 cask "spotify"

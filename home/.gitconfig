@@ -26,5 +26,11 @@
 [pull]
     rebase = false
 
+[push]
+    autoSetupRemote = true
+
+[rerere]
+    enabled = true
+
 [fetch]
     prune = true

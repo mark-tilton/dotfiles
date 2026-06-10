@@ -1,5 +1,6 @@
 export ZK_NOTEBOOK_DIR="$HOME/repos/notes"
 
-# Begin added by argcomplete
-fpath=( /Users/marktilton/.local/pipx/venvs/argcomplete/lib/python3.13/site-packages/argcomplete/bash_completion.d "${fpath[@]}" )
-# End added by argcomplete
+# argcomplete completions from pipx, tolerant of python version and absence
+_argcomplete_dirs=("$HOME"/.local/pipx/venvs/argcomplete/lib/python*/site-packages/argcomplete/bash_completion.d(N))
+(( $#_argcomplete_dirs )) && fpath=( "${_argcomplete_dirs[-1]}" "${fpath[@]}" )
+unset _argcomplete_dirs
