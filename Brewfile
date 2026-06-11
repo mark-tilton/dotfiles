@@ -6,6 +6,7 @@ brew "stow"
 
 # Window manager extras
 brew "borders"
+brew "sketchybar"
 
 # Fuzzy finder / search
 brew "fd"
@@ -64,6 +65,7 @@ brew "mise"
 # Fonts
 cask "font-maple-mono-nf"
 cask "font-quicksand"
+cask "font-sketchybar-app-font"
 
 # Apps
 cask "1password"
@@ -83,5 +85,6 @@ cask "linearmouse"
 cask "logi-options+"
 cask "love"
 cask "obsidian"
+cask "raycast"
 cask "aerospace"
 cask "spotify"

@@ -5,6 +5,9 @@ defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 # Reduce motion further cuts AeroSpace's animation-wait lag (takes effect after logout)
 defaults write com.apple.universalaccess reduceMotion -bool true
 
+# Hide the macOS menu bar — sketchybar replaces it
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # Only show active items on the dock
 defaults write com.apple.dock static-only -bool true
 
