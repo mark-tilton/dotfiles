@@ -11,6 +11,12 @@ defaults write com.apple.dock static-only -bool true
 # Autohide the dock
 defaults write com.apple.dock "autohide" -bool "true"
 
+# Remove the delay before the auto-hidden dock reveals
+defaults write com.apple.dock autohide-delay -float 0
+
+# Don't rearrange Spaces by most recent use — keeps workspace order static for AeroSpace
+defaults write com.apple.dock mru-spaces -bool false
+
 killall Dock
 
 #Source: https://github.com/rusty1s/dotfiles/blob/master/macos/defaults.sh
@@ -19,6 +25,20 @@ killall Dock
 defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+# Full keyboard access: tab moves focus through all controls in dialogs
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Screenshots: PNG, no window drop shadow
+defaults write com.apple.screencapture disable-shadow -bool true
+defaults write com.apple.screencapture type -string "png"
+
+# Don't litter network/USB volumes with .DS_Store files
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Show battery percentage in the menu bar
+defaults write com.apple.controlcenter BatteryShowPercentage -bool true
 
 # Disable the "Are you sure you want to open this application?" dialog.
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -35,7 +55,8 @@ defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false     #
 # Finder
 defaults write com.apple.finder AppleShowAllFiles -bool true                # Show hidden files.
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true             # Show all file extensions.
-defaults write com.apple.finder FXEnableExtensionsChangeWarning -bool false # Disable file extension change warning.
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false  # Disable file extension change warning.
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"         # Default to list view.
 defaults write com.apple.finder ShowStatusBar -bool true                    # Show status bar.
 defaults write com.apple.finder ShowPathbar -bool true                      # Show path bar.
 defaults write com.apple.finder ShowRecentTags -bool false                  # Hide tags in sidebar.

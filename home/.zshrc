@@ -26,7 +26,19 @@ alias glog="git log --oneline --graph --decorate"
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
+# yazi: y opens the file manager and cd's to wherever you quit
+y() {
+	local tmp cwd
+	tmp="$(mktemp -t yazi-cwd.XXXXXX)"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Prompt and shell integrations
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(atuin init zsh)"
+eval "$(mise activate zsh)"

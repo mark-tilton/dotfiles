@@ -3,3 +3,4 @@ zsh-users/zsh-completions kind:fpath path:src
 zsh-users/zsh-autosuggestions kind:defer
 mattmc3/zfunctions
 zdharma-continuum/fast-syntax-highlighting kind:defer
+olets/zsh-abbr kind:defer
