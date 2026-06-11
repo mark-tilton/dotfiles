@@ -12,10 +12,17 @@ YELLOW=0xffc0a36e      # boatYellow2
 
 sketchybar --bar \
 	position=top \
-	height=32 \
 	color=$BAR_COLOR \
 	padding_left=8 \
 	padding_right=8
+
+# Height depends on whether a notched display is connected; recomputed on
+# display changes by the bar_height watcher item below.
+"$PLUGIN_DIR/bar_height.sh"
+
+sketchybar --add item bar_height left \
+	--set bar_height drawing=off script="$PLUGIN_DIR/bar_height.sh" \
+	--subscribe bar_height display_change system_woke
 
 sketchybar --default \
 	icon.font="Maple Mono NF:Bold:14.0" \

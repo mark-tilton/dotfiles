@@ -28,7 +28,9 @@ inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.bottom = 8
-outer.top = 44 # 32px sketchybar + 12px gap (macOS menu bar is hidden)
+# Built-in: notch row already excluded from usable area and sketchybar sits in
+# it, so only the 12px gap. External: 32px sketchybar + 12px gap (menu bar hidden).
+outer.top = [{ monitor.'built-in' = 12 }, 44]
 outer.right = 8
 
 # Opt is the mod (AeroSpace's default). Caps lock held also emits opt via
